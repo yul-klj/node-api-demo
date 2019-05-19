@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  node-api:
+    build:
+      context: ./
+      args:
+        - NODE_VERSION=lts-jessie-slim
+    volumes:
+      - ./:/app
+    container_name: node-api
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "5"
+    ports:
+      - "3000:3000"
